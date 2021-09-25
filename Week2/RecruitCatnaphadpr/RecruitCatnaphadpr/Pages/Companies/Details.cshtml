@@ -2,13 +2,13 @@
 @model RecruitCatnaphadpr.Pages.Companies.DetailsModel
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Details of Company";
 }
 
-<h1>Details</h1>
+<h1>Details of Comapny</h1>
 
 <div>
-    <h4>Company</h4>
+    
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -48,24 +48,6 @@
             @Html.DisplayFor(model => model.Company.Location)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Company.CandidateId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Company.CandidateId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Company.Industry)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Company.Industry.IndustryId)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Company.JobTitle)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Company.JobTitle.JobTitleId)
-        </dd>
-        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Company.CPTorOPT)
         </dt>
         <dd class="col-sm-10">
@@ -77,7 +59,51 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Company.Workfromhome)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.Industry)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.Industry.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Company.JobTitle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Company.JobTitle.Name)
+        </dd>
     </dl>
+</div>
+
+
+<div>
+    @if (Model.Company.Candidates == null || Model.Company.Candidates.Count == 0)
+    {
+<div class="alert-dark">
+    <h4>No Candidates</h4>
+    <p>No-one applied</p>
+</div> }
+            else
+            {
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Candidate First Name</th>
+            <th>Job Title</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ca in Model.Company.Candidates)
+        {
+<tr>
+    <td>@ca.FirstName</td>
+
+    <td>@ca.JobTitle.Name</td>
+   
+    <td><a href="/Candidates/Details?id=@ca.CandidateId">Details</a>
+</tr>}
+    </tbody>
+</table>}
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Company.CompanyId">Edit</a> |

@@ -39,9 +39,9 @@ namespace RecruitCatnaphadpr.Pages.Candidates
             {
                 return NotFound();
             }
-           ViewData["CompanyId"] = new SelectList(_context.Company, "CompanyId", "CompanyId");
-           ViewData["IndustryId"] = new SelectList(_context.Industry, "IndustryId", "IndustryId");
-           ViewData["JobTitleId"] = new SelectList(_context.JobTitle, "JobTitleId", "JobTitleId");
+           ViewData["CompanyId"] = new SelectList(_context.Company, "CompanyId", "Name");
+           ViewData["IndustryId"] = new SelectList(_context.Industry, "IndustryId", "Name");
+           ViewData["JobTitleId"] = new SelectList(_context.JobTitle, "JobTitleId", "Name");
             return Page();
         }
 

@@ -2,10 +2,10 @@
 @model RecruitCatnaphadpr.Pages.Companies.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "All Companies";
 }
 
-<h1>Index</h1>
+<h1>All Companies</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -28,23 +28,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.Company[0].Optionalstartdate)
             </th>
+           
             <th>
-                @Html.DisplayNameFor(model => model.Company[0].Location)
+                @Html.DisplayNameFor(model => model.Company[0].CPTorOPT)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Company[0].CandidateId)
+                @Html.DisplayNameFor(model => model.Company[0].Workfromhome)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Company[0].Industry)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Company[0].JobTitle)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Company[0].CPTorOPT)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Company[0].Workfromhome)
             </th>
             <th></th>
         </tr>
@@ -67,23 +62,30 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Optionalstartdate)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
+
+            <td class="text-center">
+                @if (item.CPTorOPT == true)
+                {
+                    <span class="badge badge-success">Yes</span> }
+                else
+                {
+                    <span class="badge badge-danger">No</span>
+                }
+            </td>
+            <td class="text-center">
+                @if (item.Workfromhome == true)
+                {
+                    <span class="badge badge-success">Yes</span> }
+                else
+                {
+                    <span class="badge badge-danger">No</span>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CandidateId)
+                @Html.DisplayFor(modelItem => item.Industry.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Industry.IndustryId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobTitle.JobTitleId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CPTorOPT)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Workfromhome)
+                @Html.DisplayFor(modelItem => item.JobTitle.Name)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.CompanyId">Edit</a> |

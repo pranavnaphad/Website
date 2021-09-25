@@ -28,8 +28,9 @@ namespace RecruitCatnaphadpr.Pages.Companies
                 return NotFound();
             }
 
-            Company = await _context.Company
+            Company = await _context.Company.Include(co => co.Candidates)
                 .Include(c => c.Industry)
+               .Include(c => c.Candidates)
                 .Include(c => c.JobTitle).FirstOrDefaultAsync(m => m.CompanyId == id);
 
             if (Company == null)

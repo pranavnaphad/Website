@@ -5,10 +5,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Candidate Details</h1>
 
 <div>
-    <h4>Candidate</h4>
+    
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -39,19 +39,19 @@
             @Html.DisplayNameFor(model => model.Candidate.Company)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Candidate.Company.CompanyId)
+            @Html.DisplayFor(model => model.Candidate.Company.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Candidate.JobTitle)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Candidate.JobTitle.JobTitleId)
+            @Html.DisplayFor(model => model.Candidate.JobTitle.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Candidate.Industry)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Candidate.Industry.IndustryId)
+            @Html.DisplayFor(model => model.Candidate.Industry.Name)
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Candidate.Validpassport)
@@ -77,12 +77,7 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Candidate.Children)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Candidate.Gender)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Candidate.Gender)
-        </dd>
+       
     </dl>
 </div>
 <div>
